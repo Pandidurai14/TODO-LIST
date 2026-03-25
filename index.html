@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pandi.dev Tasks</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="dev-logo">pandi<span>.dev</span></h1>
+            <p class="subtitle">Task & Alarm Manager</p>
+        </header>
+
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="Write a new task..." aria-label="New task input">
+            <button id="addBtn" aria-label="Add task">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <div class="time-picker-section">
+            <div class="time-picker-group">
+                <input type="date" id="taskDate" aria-label="Date">
+                <select id="taskHour" aria-label="Hour"></select>
+                <span class="colon">:</span>
+                <select id="taskMinute" aria-label="Minute"></select>
+                <span class="colon">:</span>
+                <select id="taskSecond" aria-label="Second"></select>
+                <select id="taskAmPm" aria-label="AM/PM">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+            
+            <!-- Sound Selection -->
+            <div class="sound-picker-group">
+                <label for="taskSound" class="sound-label"><i class="fas fa-music"></i> Sound:</label>
+                <select id="taskSound" aria-label="Alarm Sound">
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/bell_ring.mp3">1. Bell Ring</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/door_bell.mp3">2. Doorbell</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/computer_error.mp3">3. Computer Alert</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/button_tiny.mp3">4. Tiny Beep</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/camera_flashing_2.mp3">5. Camera Flash</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/glass.mp3">6. Glass Clink</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/water_droplet_3.mp3">7. Water Droplet</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/branch_break.mp3">8. Branch Break</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/snap.mp3">9. Snap</option>
+                    <option value="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/tap.mp3">10. Tap</option>
+                </select>
+                <button id="previewSoundBtn" type="button" aria-label="Preview Sound" title="Click to hear sound">
+                    <i class="fas fa-play"></i>
+                </button>
+            </div>
+
+            <div class="time-hint">Optional: Set an exact Date & Time alarm</div>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Tasks</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <ul class="task-list" id="taskList">
+            <!-- Tasks will be added here dynamically -->
+        </ul>
+    </div>
+    
+    <!-- Alarm Overlay Modal -->
+    <div id="alarmModal" class="alarm-modal hidden">
+        <div class="alarm-content">
+            <h2 class="alarm-title"><i class="fas fa-bell ringing"></i> ALARM!</h2>
+            <p id="alarmTaskText">Task Name Here</p>
+            <button id="stopAlarmBtn"><i class="fas fa-check-circle"></i> Mark as Done!</button>
+        </div>
+    </div>
+
+    <!-- Audio element for the alarm sound (Loops continuously) -->
+    <audio id="alarmSound" src="https://raw.githubusercontent.com/IonDen/ion.sound/master/sounds/bell_ring.mp3" loop preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
